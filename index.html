@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LibraSpace – Home</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: calc(100vh - 68px);
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding: clamp(4rem,10vw,8rem) clamp(1.5rem,5vw,4rem);
+    }
+    .blob-1 { width: 600px; height: 600px; background: rgba(91,141,239,0.12); top: -100px; right: -150px; }
+    .blob-2 { width: 400px; height: 400px; background: rgba(240,165,0,0.08); bottom: -50px; left: -100px; }
+
+    .hero-content { position: relative; z-index: 2; max-width: 680px; }
+    .hero-badge { margin-bottom: 1.5rem; }
+
+    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2.5rem; }
+
+    .hero-stats {
+      display: flex; gap: 2.5rem; margin-top: 3.5rem; flex-wrap: wrap;
+    }
+    .stat-item h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem; font-weight: 900;
+      color: var(--text);
+    }
+    .stat-item p { font-size: 0.85rem; color: var(--muted); margin-top: 0.2rem; }
+
+    /* ── FEATURES ── */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .feature-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      transition: all var(--transition);
+      cursor: default;
+    }
+    .feature-card:hover {
+      border-color: rgba(91,141,239,0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .feature-icon {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; margin-bottom: 1.25rem;
+    }
+    .feature-card h3 { font-size: 1.1rem; margin-bottom: 0.6rem; color: var(--text); }
+    .feature-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.65; }
+
+    /* ── HOW IT WORKS ── */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem; margin-top: 3rem;
+    }
+    .step { text-align: center; position: relative; }
+    .step::after {
+      content: '→';
+      position: absolute; right: -1rem; top: 1.2rem;
+      color: var(--border); font-size: 1.5rem;
+    }
+    .step:last-child::after { display: none; }
+    .step-num {
+      width: 52px; height: 52px;
+      border: 2px solid var(--primary);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; font-weight: 700; color: var(--primary);
+      margin: 0 auto 1rem;
+    }
+    .step h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+    .step p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── CTA BANNER ── */
+    .cta-banner {
+      background: linear-gradient(135deg, rgba(91,141,239,0.15) 0%, rgba(240,165,0,0.08) 100%);
+      border: 1px solid rgba(91,141,239,0.25);
+      border-radius: 20px;
+      padding: 4rem clamp(2rem,6vw,5rem);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      margin: 0 clamp(1.5rem,5vw,4rem) 6rem;
+    }
+    .cta-banner h2 { font-size: clamp(1.8rem,4vw,3rem); margin-bottom: 1rem; }
+    .cta-banner p { color: var(--muted); margin-bottom: 2rem; font-size: 1.05rem; }
+
+    @media (max-width: 768px) {
+      .step::after { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">Libra<span>Space</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a href="signin.html" class="btn btn-ghost">Sign In</a>
+    <a href="signup.html" class="btn btn-primary">Sign Up</a>
+  </div>
+  <button class="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu">
+  <a href="index.html">Home</a>
+  <a href="about.html">About Us</a>
+  <a href="contact.html">Contact</a>
+  <a href="signin.html">Sign In</a>
+  <a href="signup.html">Sign Up</a>
+</div>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="hero-content">
+      <div class="tag hero-badge">✦ Platform Literasi Digital</div>
+      <h1 class="heading-xl">
+        Belajar Lebih<br/>
+        <em>Cerdas</em>, Hidup<br/>
+        Lebih Bermakna
+      </h1>
+      <p class="lead">
+        LibraSpace adalah platform perpustakaan digital modern untuk mahasiswa dan akademisi. Akses ribuan referensi, jurnal, dan e-book kapan saja, di mana saja.
+      </p>
+      <div class="hero-cta">
+        <a href="signup.html" class="btn btn-accent btn-lg">Mulai Gratis →</a>
+        <a href="about.html" class="btn btn-ghost btn-lg">Tentang Kami</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item reveal" data-delay="0">
+          <h3>50K+</h3>
+          <p>Koleksi Buku</p>
+        </div>
+        <div class="stat-item reveal" data-delay="100">
+          <h3>12K+</h3>
+          <p>Pengguna Aktif</p>
+        </div>
+        <div class="stat-item reveal" data-delay="200">
+          <h3>98%</h3>
+          <p>Kepuasan Pengguna</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="section">
+    <div class="tag reveal">Fitur Unggulan</div>
+    <h2 class="heading-lg reveal">Semua yang Kamu Butuhkan<br/>Ada di Sini</h2>
+    <p class="lead reveal">Dirancang khusus untuk mendukung perjalanan akademik dan profesional kamu.</p>
+    <div class="features-grid">
+      <div class="feature-card reveal" data-delay="0">
+        <div class="feature-icon" style="background:rgba(91,141,239,0.15);">📚</div>
+        <h3>Koleksi Lengkap</h3>
+        <p>Akses lebih dari 50.000 judul buku, jurnal ilmiah, dan referensi akademik dari seluruh dunia.</p>
+      </div>
+      <div class="feature-card reveal" data-delay="100">
+        <div class="feature-icon" style="background:rgba(240,165,0,0.15);">⚡</div>
+        <h3>Pencarian Instan</h3>
+        <p>Temukan buku atau artikel yang kamu butuhkan dalam hitungan detik dengan teknologi pencarian canggih.</p>
+      </div>
+      <div class="feature-card reveal" data-delay="200">
+        <div class="feature-icon" style="background:rgba(76,175,130,0.15);">📱</div>
+        <h3>Multi-Device</h3>
+        <p>Baca di laptop, tablet, atau smartphone. Progres bacaan tersinkronisasi otomatis di semua perangkat.</p>
+      </div>
+      <div class="feature-card reveal" data-delay="0">
+        <div class="feature-icon" style="background:rgba(239,91,91,0.15);">🔖</div>
+        <h3>Bookmark & Catatan</h3>
+        <p>Tandai halaman penting dan tambahkan catatan pribadi untuk memudahkan sesi belajar berikutnya.</p>
+      </div>
+      <div class="feature-card reveal" data-delay="100">
+        <div class="feature-icon" style="background:rgba(91,141,239,0.15);">👥</div>
+        <h3>Komunitas Belajar</h3>
+        <p>Bergabung dengan ribuan pelajar lain dalam grup diskusi dan forum tanya jawab yang aktif.</p>
+      </div>
+      <div class="feature-card reveal" data-delay="200">
+        <div class="feature-icon" style="background:rgba(240,165,0,0.15);">🎓</div>
+        <h3>Sertifikat Digital</h3>
+        <p>Dapatkan sertifikat digital terverifikasi setelah menyelesaikan program membaca yang telah ditentukan.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section" style="background: var(--surface); max-width:100%; border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+    <div style="max-width:1200px; margin:0 auto;">
+      <div class="tag reveal">Cara Kerja</div>
+      <h2 class="heading-lg reveal">Mulai dalam 3 Langkah Mudah</h2>
+      <div class="steps">
+        <div class="step reveal" data-delay="0">
+          <div class="step-num">01</div>
+          <h3>Daftar Akun</h3>
+          <p>Buat akun gratis dengan email atau akun Google kamu dalam waktu kurang dari satu menit.</p>
+        </div>
+        <div class="step reveal" data-delay="150">
+          <div class="step-num">02</div>
+          <h3>Pilih Konten</h3>
+          <p>Browse koleksi kami berdasarkan kategori, bidang studi, atau rekomendasi personal.</p>
+        </div>
+        <div class="step reveal" data-delay="300">
+          <div class="step-num">03</div>
+          <h3>Mulai Belajar</h3>
+          <p>Baca online atau unduh untuk dibaca offline. Catat, bookmark, dan bagikan penemuanmu.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-banner reveal">
+    <h2>Siap Memulai Perjalanan Belajarmu?</h2>
+    <p>Bergabung dengan lebih dari 12.000 pelajar yang sudah merasakan manfaatnya.</p>
+    <a href="signup.html" class="btn btn-accent btn-lg">Daftar Sekarang – Gratis</a>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-brand">Libra<span>Space</span></div>
+  <p>© 2025 LibraSpace. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
