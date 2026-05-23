@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LibraSpace – About Us</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* ── HERO ── */
+    .about-hero {
+      position: relative;
+      padding: clamp(5rem,10vw,8rem) clamp(1.5rem,5vw,4rem) 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .blob-a { width: 500px; height: 500px; background: rgba(91,141,239,0.1); top: -80px; right: -100px; }
+    .blob-b { width: 350px; height: 350px; background: rgba(240,165,0,0.07); bottom: -60px; left: -60px; }
+
+    .about-hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .about-hero-text { position: relative; z-index: 2; }
+    .about-hero-visual {
+      position: relative; z-index: 2;
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+    .visual-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .visual-card-icon { font-size: 2rem; }
+    .visual-card h4 { font-size: 1.4rem; font-weight: 700; color: var(--text); }
+    .visual-card p { font-size: 0.85rem; color: var(--muted); }
+    .visual-card.accent { border-color: rgba(240,165,0,0.3); background: rgba(240,165,0,0.05); }
+    .visual-card.blue { border-color: rgba(91,141,239,0.3); background: rgba(91,141,239,0.05); }
+    .visual-card.green { border-color: rgba(76,175,130,0.3); background: rgba(76,175,130,0.05); }
+
+    /* ── MISSION ── */
+    .mission-section {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: clamp(4rem,8vw,6rem) clamp(1.5rem,5vw,4rem);
+    }
+    .mission-inner { max-width: 1200px; margin: 0 auto; }
+    .mission-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .mission-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      text-align: center;
+      transition: all var(--transition);
+    }
+    .mission-card:hover { transform: translateY(-5px); border-color: rgba(91,141,239,0.4); box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
+    .mission-card .icon { font-size: 2.5rem; margin-bottom: 1.25rem; display: block; }
+    .mission-card h3 { font-size: 1.15rem; margin-bottom: 0.75rem; }
+    .mission-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.7; }
+
+    /* ── STORY ── */
+    .story-section { max-width: 1200px; margin: 0 auto; }
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .story-text { }
+    .story-text p { color: var(--muted); line-height: 1.8; margin-bottom: 1.25rem; font-size: 0.95rem; }
+    .timeline { margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+    .timeline-item { display: flex; gap: 1rem; align-items: flex-start; }
+    .tl-dot {
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--primary); flex-shrink: 0; margin-top: 0.35rem;
+      box-shadow: 0 0 12px rgba(91,141,239,0.5);
+    }
+    .tl-year { font-size: 0.8rem; color: var(--primary); font-weight: 600; margin-bottom: 0.2rem; }
+    .tl-desc { font-size: 0.875rem; color: var(--muted); line-height: 1.55; }
+
+    .story-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+    .stat-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      text-align: center;
+      transition: all var(--transition);
+    }
+    .stat-card:hover { border-color: rgba(91,141,239,0.3); }
+    .stat-card h3 {
+      font-size: 2.5rem; font-weight: 900;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: 0.35rem;
+    }
+    .stat-card p { font-size: 0.875rem; color: var(--muted); }
+
+    /* ── TEAM ── */
+    .team-section { max-width: 1200px; margin: 0 auto; }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .team-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: all var(--transition);
+    }
+    .team-card:hover { transform: translateY(-4px); border-color: rgba(91,141,239,0.35); box-shadow: 0 16px 50px rgba(0,0,0,0.25); }
+    .team-avatar {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      margin: 0 auto 1.25rem;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; font-weight: 700;
+      color: #fff;
+    }
+    .team-card h4 { font-size: 1rem; margin-bottom: 0.35rem; }
+    .team-card .role { font-size: 0.82rem; color: var(--primary); font-weight: 600; margin-bottom: 0.5rem; }
+    .team-card .bio { font-size: 0.85rem; color: var(--muted); line-height: 1.55; }
+
+    /* ── VALUES ── */
+    .values-section {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: clamp(4rem,8vw,6rem) clamp(1.5rem,5vw,4rem);
+    }
+    .values-inner { max-width: 1200px; margin: 0 auto; }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .value-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      position: relative;
+      overflow: hidden;
+      transition: all var(--transition);
+    }
+    .value-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+    }
+    .value-card.c1::before { background: linear-gradient(90deg, var(--primary), #7eb5ff); }
+    .value-card.c2::before { background: linear-gradient(90deg, var(--accent), #ffd166); }
+    .value-card.c3::before { background: linear-gradient(90deg, var(--success), #7fffc4); }
+    .value-card.c4::before { background: linear-gradient(90deg, var(--danger), #ff9fb3); }
+    .value-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.2); }
+    .value-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem; font-weight: 900;
+      color: rgba(255,255,255,0.05);
+      position: absolute; top: 1rem; right: 1.25rem;
+      line-height: 1;
+    }
+    .value-card .icon { font-size: 1.75rem; margin-bottom: 1rem; display: block; }
+    .value-card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+    .value-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.65; }
+
+    @media (max-width: 900px) {
+      .about-hero-inner { grid-template-columns: 1fr; }
+      .about-hero-visual { display: none; }
+      .story-grid { grid-template-columns: 1fr; }
+      .mission-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">Libra<span>Space</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html" class="active">About Us</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a href="signin.html" class="btn btn-ghost">Sign In</a>
+    <a href="signup.html" class="btn btn-primary">Sign Up</a>
+  </div>
+  <button class="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu">
+  <a href="index.html">Home</a>
+  <a href="about.html">About Us</a>
+  <a href="contact.html">Contact</a>
+  <a href="signin.html">Sign In</a>
+  <a href="signup.html">Sign Up</a>
+</div>
+
+<main>
+  <!-- HERO -->
+  <section class="about-hero">
+    <div class="blob blob-a"></div>
+    <div class="blob blob-b"></div>
+    <div class="about-hero-inner">
+      <div class="about-hero-text reveal">
+        <div class="tag">✦ Tentang Kami</div>
+        <h1 class="heading-xl">Kami Percaya<br/>Pengetahuan<br/>untuk <em>Semua</em></h1>
+        <p class="lead">LibraSpace lahir dari keyakinan bahwa akses ke pengetahuan berkualitas adalah hak semua orang, bukan hak istimewa. Kami membangun jembatan antara pelajar dan ilmu pengetahuan dunia.</p>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem;">
+          <a href="signup.html" class="btn btn-primary btn-lg">Bergabung Sekarang</a>
+          <a href="contact.html" class="btn btn-ghost btn-lg">Hubungi Kami</a>
+        </div>
+      </div>
+      <div class="about-hero-visual reveal" data-delay="200">
+        <div class="visual-card blue">
+          <div class="visual-card-icon">📚</div>
+          <div><h4>50.000+</h4><p>Koleksi buku & jurnal digital</p></div>
+        </div>
+        <div class="visual-card green">
+          <div class="visual-card-icon">👥</div>
+          <div><h4>12.000+</h4><p>Pengguna aktif di seluruh Indonesia</p></div>
+        </div>
+        <div class="visual-card accent">
+          <div class="visual-card-icon">🏆</div>
+          <div><h4>4 Tahun</h4><p>Berpengalaman dalam literasi digital</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION, VISION, PURPOSE -->
+  <section class="mission-section">
+    <div class="mission-inner">
+      <div class="tag reveal">Misi & Visi</div>
+      <h2 class="heading-lg reveal">Apa yang Mendorong Kami</h2>
+      <div class="mission-grid">
+        <div class="mission-card reveal" data-delay="0">
+          <span class="icon">🎯</span>
+          <h3>Misi Kami</h3>
+          <p>Menyediakan platform literasi digital yang inklusif, mudah diakses, dan terpercaya untuk seluruh pelajar dan akademisi Indonesia.</p>
+        </div>
+        <div class="mission-card reveal" data-delay="150">
+          <span class="icon">🔭</span>
+          <h3>Visi Kami</h3>
+          <p>Menjadi ekosistem pengetahuan digital terbesar di Asia Tenggara yang menghubungkan jutaan pelajar dengan sumber ilmu terbaik dunia.</p>
+        </div>
+        <div class="mission-card reveal" data-delay="300">
+          <span class="icon">💡</span>
+          <h3>Tujuan Kami</h3>
+          <p>Menghapus hambatan akses informasi dan mendorong budaya membaca serta belajar sepanjang hayat di Indonesia.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY + STATS -->
+  <section class="section story-section">
+    <div class="story-grid">
+      <div class="story-text reveal">
+        <div class="tag">Kisah Kami</div>
+        <h2 class="heading-lg">Dari Kamar Kos<br/>ke Ribuan Pengguna</h2>
+        <p>LibraSpace dimulai pada 2021 di sebuah kamar kos di Yogyakarta. Tiga mahasiswa yang frustasi karena kesulitan mengakses referensi skripsi memutuskan untuk membangun solusinya sendiri.</p>
+        <p>Hari ini, LibraSpace telah berkembang menjadi platform kepercayaan lebih dari 12.000 mahasiswa, dosen, dan peneliti dari berbagai penjuru Indonesia.</p>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="tl-dot"></div>
+            <div><div class="tl-year">2021</div><div class="tl-desc">LibraSpace diluncurkan dengan 500 koleksi pertama dan 50 pengguna awal.</div></div>
+          </div>
+          <div class="timeline-item">
+            <div class="tl-dot"></div>
+            <div><div class="tl-year">2022</div><div class="tl-desc">Raih pendanaan Rp 2 miliar. Koleksi tumbuh menjadi 10.000 judul.</div></div>
+          </div>
+          <div class="timeline-item">
+            <div class="tl-dot"></div>
+            <div><div class="tl-year">2023</div><div class="tl-desc">Ekspansi ke 15 kota. 5.000 pengguna aktif bulanan.</div></div>
+          </div>
+          <div class="timeline-item">
+            <div class="tl-dot"></div>
+            <div><div class="tl-year">2025</div><div class="tl-desc">50.000+ koleksi, 12.000+ pengguna, kemitraan dengan 30+ universitas.</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="story-stats reveal" data-delay="200">
+        <div class="stat-card">
+          <h3>50K+</h3>
+          <p>Koleksi Digital</p>
+        </div>
+        <div class="stat-card">
+          <h3>12K+</h3>
+          <p>Pengguna Aktif</p>
+        </div>
+        <div class="stat-card">
+          <h3>30+</h3>
+          <p>Mitra Universitas</p>
+        </div>
+        <div class="stat-card">
+          <h3>98%</h3>
+          <p>Kepuasan Pengguna</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="section team-section">
+    <div class="tag reveal">Tim Kami</div>
+    <h2 class="heading-lg reveal">Orang-Orang di Balik LibraSpace</h2>
+    <p class="lead reveal">Tim kami terdiri dari para profesional berpengalaman yang berdedikasi untuk kemajuan literasi Indonesia.</p>
+    <div class="team-grid">
+      <div class="team-card reveal" data-delay="0">
+        <div class="team-avatar" style="background:linear-gradient(135deg,#5B8DEF,#7eb5ff);">RA</div>
+        <h4>Rizky Aditya</h4>
+        <div class="role">Co-Founder & CEO</div>
+        <div class="bio">Mantan engineer di Tokopedia. Passionate di bidang edtech dan akses pendidikan inklusif.</div>
+      </div>
+      <div class="team-card reveal" data-delay="100">
+        <div class="team-avatar" style="background:linear-gradient(135deg,#F0A500,#ffd166);">SP</div>
+        <h4>Sari Pertiwi</h4>
+        <div class="role">Co-Founder & CTO</div>
+        <div class="bio">Lulusan ITS jurusan Informatika. Membangun infrastruktur teknis LibraSpace dari nol.</div>
+      </div>
+      <div class="team-card reveal" data-delay="200">
+        <div class="team-avatar" style="background:linear-gradient(135deg,#4CAF82,#7fffc4);">BH</div>
+        <h4>Bagas Hendra</h4>
+        <div class="role">Head of Product</div>
+        <div class="bio">5 tahun pengalaman di product management. Fokus pada UX yang sederhana dan berdampak.</div>
+      </div>
+      <div class="team-card reveal" data-delay="300">
+        <div class="team-avatar" style="background:linear-gradient(135deg,#EF5B5B,#ff9fb3);">NL</div>
+        <h4>Nadia Larasati</h4>
+        <div class="role">Head of Content</div>
+        <div class="bio">Pustakawan bersertifikat dengan jaringan luas ke penerbit dan institusi akademik nasional.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="values-section">
+    <div class="values-inner">
+      <div class="tag reveal">Nilai-Nilai Kami</div>
+      <h2 class="heading-lg reveal">Prinsip yang Kami Pegang</h2>
+      <div class="values-grid">
+        <div class="value-card c1 reveal" data-delay="0">
+          <div class="value-num">01</div>
+          <span class="icon">🌍</span>
+          <h3>Inklusivitas</h3>
+          <p>Pengetahuan harus bisa diakses oleh siapa saja, tanpa memandang latar belakang ekonomi atau geografi.</p>
+        </div>
+        <div class="value-card c2 reveal" data-delay="100">
+          <div class="value-num">02</div>
+          <span class="icon">✅</span>
+          <h3>Integritas</h3>
+          <p>Kami hanya menyediakan konten yang terverifikasi, akurat, dan dapat dipertanggungjawabkan kualitasnya.</p>
+        </div>
+        <div class="value-card c3 reveal" data-delay="200">
+          <div class="value-num">03</div>
+          <span class="icon">🚀</span>
+          <h3>Inovasi</h3>
+          <p>Kami terus berinovasi dalam teknologi dan konten untuk memberikan pengalaman belajar terbaik.</p>
+        </div>
+        <div class="value-card c4 reveal" data-delay="300">
+          <div class="value-num">04</div>
+          <span class="icon">🤝</span>
+          <h3>Kolaborasi</h3>
+          <p>Kami percaya pada kekuatan komunitas dan kolaborasi untuk menciptakan dampak yang lebih besar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-brand">Libra<span>Space</span></div>
+  <p>© 2025 LibraSpace. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
